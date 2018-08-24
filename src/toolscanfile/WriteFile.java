@@ -14,26 +14,26 @@ import java.util.ArrayList;
  */
 public class WriteFile {
 
-    public void write_paths_to_file(ArrayList paths, String fileName) throws IOException {
-        File f;
-        f = new File(fileName);
-
-        try (FileWriter fw = new FileWriter(f); PrintWriter pw = new PrintWriter(fw)) {
-            for (int i = 0; i < paths.size(); i++) {
-                pw.println((String) paths.get(i));
-            }
-            pw.println(paths);
-            fw.close();
-            pw.close();
+    public void write_paths_to_file(ArrayList<String> paths, String fileName) throws IOException {
+        FileWriter writer = new FileWriter(fileName);
+        for (String str : paths) {
+            writer.write(str);
+            writer.write("\n");
         }
+        writer.close();
     }
-    
 
-    public void create_file(String fileName) {
+    /**
+     *
+     * @param fileName
+     * @throws IOException
+     */
+    public void create_file(String fileName) throws IOException {
         File f;
         f = new File(fileName);
         if (f.exists()) {
             f.delete();
         }
+        f.createNewFile();
     }
 }

@@ -35,17 +35,17 @@ public class SearchInFile {
 //        Writer writer = new OutputStreamWriter(out, "UTF-8"); // ghi ket qua sau khi tim kiem
         System.out.println("doc file");
         String search = input.readLine();
-
+        
         while (search != null) {
-            System.out.println(search);
+//            System.out.println(search);
             InputStream readf = new FileInputStream(search);
             Reader readfile = new InputStreamReader(readf, "UTF-8");
             result = new BufferedReader(readfile); //lay tung path trong search.txt
             String path = "";
             while ((path = result.readLine()) != null) {
-                System.out.println(path);
-                if (path.indexOf(keyWord) > 0) {
-                    System.out.println("YES");
+//                System.out.println(path);
+                if (path.indexOf(keyWord) >= 0) {
+//                    System.out.println("YES");
                     resultPaths.add(search);
 //                    writer.write(search);
 //                    writer.write("\n");
@@ -60,9 +60,12 @@ public class SearchInFile {
         in.close();
         reader.close();
         input.close();
-        result.close();
+//        result.close();
 //        writer.close();
 
+//        for(int i=0;i<resultPaths.size();i++){
+//            System.out.println(resultPaths.get(i));
+//        }
         return resultPaths;
     }
 
