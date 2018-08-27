@@ -33,7 +33,7 @@ public class SearchInFile {
         BufferedReader result = null;
 //        OutputStream out = new FileOutputStream("result.txt");
 //        Writer writer = new OutputStreamWriter(out, "UTF-8"); // ghi ket qua sau khi tim kiem
-        System.out.println("doc file");
+//        System.out.println("doc file");
         String search = input.readLine();
         
         while (search != null) {

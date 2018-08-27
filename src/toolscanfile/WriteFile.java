@@ -16,9 +16,9 @@ public class WriteFile {
 
     public void write_paths_to_file(ArrayList<String> paths, String fileName) throws IOException {
         FileWriter writer = new FileWriter(fileName);
+        PrintWriter pw = new PrintWriter(writer);
         for (String str : paths) {
-            writer.write(str);
-            writer.write("\n");
+            pw.println(str);
         }
         writer.close();
     }
@@ -34,6 +34,5 @@ public class WriteFile {
         if (f.exists()) {
             f.delete();
         }
-        f.createNewFile();
     }
 }

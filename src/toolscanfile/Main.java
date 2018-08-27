@@ -9,22 +9,17 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
-import toolscanfile.MakeTestDirectory;
-import toolscanfile.SearchInFile;
-import toolscanfile.WriteFile;
 
 /**
  *
  * @author SPlayer
  */
 public class Main {
-
-    private static String dirForScan = "D:\\university";
-    private static String paths_file = "D:\\test\\all_paths.txt";
-    private static String result_file = "D:\\test\\result.txt";
+    private static String dirForScan = "F:\\Games\\Banished";
+    private static String paths_file = "all_paths.txt";
+    private static String result_file = "result.txt";
     private ArrayList resultPaths = new ArrayList();
-    ArrayList<String> list = new ArrayList<String>();
-
+    ArrayList<String> list = new ArrayList<>();
     WriteFile writeFile = new WriteFile();
     SearchInFile searchInFile = new SearchInFile();
 
@@ -47,7 +42,7 @@ public class Main {
     }
 
     public void scan(String keyword) throws IOException {
-
+        writeFile.create_file(paths_file);
         list_all_paths(dirForScan, 0);
         ArrayList<String> full_paths = list;
 //        System.out.println(scanFile.list_all_paths(dirForScan, 0));
@@ -64,9 +59,13 @@ public class Main {
     }
 
     public void displayResult() {
+        if (resultPaths.isEmpty()){
+            System.err.println("Không có file chứa kí tự.");
+        }
         for (int i = 0; i < resultPaths.size(); i++) {
             System.out.println(resultPaths.get(i));
         }
+
     }
 
     public void writeResultToFile() throws IOException {
@@ -76,16 +75,16 @@ public class Main {
 
     /**
      * @param args
+     * @throws java.io.IOException
      */
     public static void main(String[] args) throws IOException {
         // TODO code application logic here
         Main main = new Main();
         Scanner input = new Scanner(System.in);
-        System.err.println("Nhap vao tu khoa muon tim: ");
+        System.err.println("Nhập vào từ khóa cần tìm: ");
         String keyword = input.nextLine();
         main.scan(keyword);
         main.displayResult();
         main.writeResultToFile();
-
     }
 }
